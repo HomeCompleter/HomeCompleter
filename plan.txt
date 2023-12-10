@@ -1,0 +1,23 @@
+
+1. Lấy data
+a) Lấy data từ trang web
+b) Chuyển data dưới dạng bảng thành các dữ liệu cho việc huấn luyện chatbot
+c) Huấn luyện cho chatbot sử dụng các dữ liệu trên
+
+* Chatbot
+a) Phân tích câu hỏi
+- Trò chuyện -> ChatGPT -> Phản hồi
+
+- Giới thiệu, thông tin
+- Bán hàng -> Suggest sản phẩm dựa trên từ khóa
+- Quảng cáo
+
+=> Prompt bán hàng
+
+b) Đưa ra bán hàng
+// Keyword(sản phẩm, mua, gợi í,...)
+Màu sắc: Xanh, đỏ,...
+Vật liệu:Giấy, gỗ,...
+Tiền: ???
+Màu sắc->Vật liệu->Tiền
+Tìm từ khóa

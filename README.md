@@ -1,6 +1,11 @@
 # HomeCompleter
 A chatbot for advertising and introducing furniture from Ikea
 
+## Change directory (cd) vào thư mục
+
+-Chuyển sang thư mục "HomeCompleter" ta : *cd HomeCompleter*
+-Nếu dùng Visual Code Studio thì có thể vào File->Open Folder->HomeCompleter
+
 ## Create environment
 
 -Tạo môi trường để khởi động app.py: *python -m venv .venv* hoặc *py -m venv .venv*
@@ -14,6 +19,10 @@ sẽ cho phép máy có quyền chạy lệnh)
 +Linux: *source ./venv/bin/activate*
 
 ## Install modules using the python-pip command:
+*pip install flask*
+*pip install numpy*
+*pip install torch*
+*pip install nltk*
 
 ## Select file to activate flask
 
