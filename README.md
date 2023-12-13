@@ -23,6 +23,8 @@ sẽ cho phép máy có quyền chạy lệnh)
 *pip install numpy*
 *pip install torch*
 *pip install nltk*
+*pip install pandas*
+*pip install numpy*
 
 ## Select file to activate flask
 
