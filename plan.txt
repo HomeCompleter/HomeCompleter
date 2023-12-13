@@ -1,0 +1,37 @@
+
+1. Lấy data
+a) Lấy data từ trang web
+b) Chuyển data dưới dạng bảng thành các dữ liệu cho việc huấn luyện chatbot
+c) Huấn luyện cho chatbot sử dụng các dữ liệu trên
+
+* Chatbot
+a) Phân tích câu hỏi
+- Trò chuyện -> ChatGPT -> Phản hồi
+
+- Giới thiệu, thông tin
+- Bán hàng -> Suggest sản phẩm dựa trên từ khóa
+- Quảng cáo
+
+=> Prompt bán hàng
+
+b) Đưa ra bán hàng
+// Keyword(sản phẩm, mua, gợi í,...)
+Màu sắc: Xanh, đỏ,...
+Vật liệu:Giấy, gỗ,...
+Tiền: ???
+Màu sắc->Vật liệu->Tiền
+Tìm từ khóa
+
+
+ Mô tả công việc: Phân tích dữ liệu từ input và trả về các giá trị
+ B1: Người dùng nhập vào input gồm một loạt các từ khóa
+ B2: Phân tích, tách các từ khóa vào một list "Keywords"
+ B3: Với mỗi "value" trong "Keywords", phân loại chúng thành các "category" tương ứng và bỏ vào 1 dictionay "categories"
+ với "key" là các "category", "value" tương ứng của chúng là các list để trống
+ B4: Với mỗi "value" trong "Keywords", đưa chúng vào các list tương ứng trong "categories"
+ B5: Phân tích dict "categories", lọc ra những sản phẩm phù hợp
+ B6: Trả về 1 list mã ID của các sản phẩm đã lọc
+ B7: Trả về dữ kiệu tương ứng với yêu cầu
+    a) Yêu cầu trả về các link dẫn đến trang web
+    b) Yêu cầu trả về các link ảnh sản phẩm
+    c) Yêu cầu trả về thông tin sản phẩm: giá tiền, số lượng, tình trạng,...

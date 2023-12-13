@@ -1,12 +1,26 @@
-from flask import Flask, render_template,request, jsonify
+from flask import Flask, render_template, request, jsonify, flash
 import os
-
 from chat import get_response
+
+# Allowed file formats (Image)
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def Rename_Files(name):
+    global user_images_folder
+    count = 0
+    # Iterate directory
+    for path in os.listdir(user_images_folder):
+        # check if current path is a file
+        if os.path.isfile(os.path.join(user_images_folder, path)):
+            count += 1
+    return os.path.join(user_images_folder, f"Img_No_{count+1}.png")
 
 app = Flask(__name__)
 
 # Create the folder for user images if it doesn't exist
-user_images_folder = "user_images"
+user_images_folder = "Project/user_images"
 os.makedirs(user_images_folder, exist_ok=True)
 
 def process_image_input(image_filename):
@@ -22,8 +36,8 @@ def index():
 def process_input():
     if 'file' in request.files:
         image_file = request.files['file']
-        if image_file.filename != '':
-            image_filename = os.path.join(user_images_folder, image_file.filename)
+        if image_file.filename != '' and allowed_file(image_file.filename):
+            image_filename = Rename_Files(image_file.name)
             image_file.save(image_filename)
             response = process_image_input(image_filename)
             return jsonify({'image_filename': image_filename, 'response': response})
@@ -34,11 +48,11 @@ def index_get():
 
 @app.post("/predict")
 def predict():
-     text = request.get_json().get("message")
-     # TODO: check if text is valid
-     response = get_response(text)
-     message = {"answer": response}
-     return jsonify(message)
+    text = request.get_json().get("message")
+    # TODO: check if text is valid
+    response = get_response(text)
+    message = {"answer": response}
+    return jsonify(message)
 
 if __name__ == "__main__":
-     app.run(debug=True)
+    app.run(debug=True)
