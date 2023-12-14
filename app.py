@@ -20,7 +20,7 @@ def Rename_Files(name):
 app = Flask(__name__)
 
 # Create the folder for user images if it doesn't exist
-user_images_folder = "Project/user_images"
+user_images_folder = "user_images"
 os.makedirs(user_images_folder, exist_ok=True)
 
 def process_image_input(image_filename):
