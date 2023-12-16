@@ -14,17 +14,17 @@ from nltk_utils import tokenize,stem
 # Find by ID function
 def Create_ID_List():
 	global data
-	Filter_Values("price", min(list_of_numbers), max(list_of_numbers))
-	print(list_of_numbers)
-	return Read_Input([data["id"].tolist()])
+	# Filter_Values("price", min(list_of_numbers), max(list_of_numbers))
+	return [data["id"].tolist()]
 def Find_Row_ID(value):
 	global data
 	data = data[data["id"]==value]
-	return
+	return data
 def Find_Cell_ID(value, category):
 	global data
-	return data[data["id"]==value][category].tolist()
+	return str(data[data["id"]==value][category])
 # ------------------------------------------------------------------------------------------------
+
 # ------------------------------------------------------------------------------------------------
 # Sort Function
 def Sort_Func(category):
@@ -48,35 +48,36 @@ def Filter_Values(category, left, right):
 def Filter(input):
 	for category in input.keys():
 		Filter_Func(category, input[category])
-	# print(data)
 	return Create_ID_List()
 
 # Search by value
 def Search_By_Value(value):
 	return Filter_Values("price", value*0.9 , value*1.1)
+
+def Randomize_Value(IDs):
+	if not IDs: return "I'm apologies for this inconvenient. We found 0 result based on your requirement. Please type 'reset' to reset the procedure."
+	rand = random.choice(IDs)
+	response = Find_Cell_ID(rand,"name"), "/", Find_Cell_ID(rand,"link")
+	# print(IDs,rand)
+	return 1
 # ------------------------------------------------------------------------------------------------
+
 # ------------------------------------------------------------------------------------------------
 # Reset data
 def Reset_data():
 	global data
-	global list_of_numbers
 	data = pd.read_csv("dataset\Dataset.csv", encoding='cp1252')
 	print("Let's chat! (type 'quit' to exit) (type 'reset' to reset)")
+	global list_of_numbers
 	list_of_numbers = [0,3000]
 	return
 
 # Retrieve a link of a product
 def Read_Input(IDs):
-	link = []
-	for id in IDs:
-		# print(Find_Row_ID(id))
-		link.extend(Find_Cell_ID(id,"link"))
-	return Randomize_Value(link)
+	return "Found a product: ", Randomize_Value(IDs)
 
-def Randomize_Value(list):
-	if not list: return "No products found. Please type 'reset' to reset the procedure."
-	return ("Found a product: ", random.choice(list))
 # ------------------------------------------------------------------------------------------------
+
 # ------------------------------------------------------------------------------------------------
 
 # Collect input from user and turn it into a dictionary
@@ -85,8 +86,8 @@ def Get_Input(input):
 	categories = Get_Categories(keywords)
 	dict = Get_Dict(categories, keywords)
 	print("Dict:", dict)
-	if len(dict) == 0: return ("Can't find what you're looking for. Maybe you should mention more about it?")
-	else: return Filter(dict) 
+	if bool(dict): return Filter(dict)
+	else: return "Can't find what you're looking for. Maybe you should mention more about it?"
 
 def Get_Keywords(input):
 	# Turn a sentence into a list of words
@@ -99,7 +100,7 @@ def Get_Keywords(input):
 			list.append(keyword)
 		elif keyword.isdigit():
 			list_of_numbers.append(float(keyword))
-	print("keyword:", list)
+		print("keyword:", list)
 	return list
 
 def Get_Categories(keywords):
@@ -115,8 +116,8 @@ def Check_Keyword(values):
 			for item in intent['patterns']:
 				if value in [stem(word) for word in tokenize(item.lower())]:
 					list.append(intent['tag'])
-		# print("Tags",list)
-	return set(list)
+					print("Tags",list)
+	return list
 
 def Get_Dict(keys, values):
 	# Create a dictionary and keys with no values
@@ -125,22 +126,20 @@ def Get_Dict(keys, values):
 		list = []
 		for intent in intents['intents']:
 			if intent['tag'] == key:
-				for value in values:
-					for item in intent['patterns']:
+				for item in intent['patterns']:
+					for value in values:
 						if value in [stem(word) for word in tokenize(item.lower())]:
 							list.append(value)
-							break
 							# values.remove(value)
 							# print(list)
 				dictionary[key] = list
-	# print(dictionary)
+	print(dictionary)
 	return dictionary
 # ------------------------------------------------------------------------------------------------
 
 # assign dataset 
 pd.options.display.max_rows = 9999
 data = pd.read_csv("dataset\Dataset.csv", encoding='cp1252')
-list_of_numbers = []
 Reset_data()
 
 with open("tags.json", 'r') as json_data:
@@ -156,18 +155,18 @@ all_words = df['all_words']
 tags = df['tags']
 model_state = df["model_state"]
 
-# Search_By_Value(10)
-# Filter_Values("price", 0, 1)
-# print(data)
-# print(all_words, tags)
 
-if __name__ == "__main__":
-	while True:
-		# sentence = "do you use credit cards?"
-		sentence = input("You: ")
-		if sentence == "quit":
-			break
-		if sentence == "reset":
-			Reset_data()
-			continue
-		print(Get_Input(sentence))
+list_of_numbers = [0,3000]
+# print(all_words, tags)
+# print(data)
+# if __name__ == "__main__":
+# 	while True:
+# 		# sentence = "do you use credit cards?"
+# 		sentence = input("You: ")
+# 		if sentence == "quit":
+# 			break
+# 		if sentence == "reset":
+# 			Reset_data()
+# 			continue
+# 		list = Get_Input(sentence)
+# 		print(Read_Input(list))
