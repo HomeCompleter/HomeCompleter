@@ -1,6 +1,7 @@
 # Import libraries
 import pandas as pd
 import csv
+from nltk_utils import tokenize,stem
 
 # Read raw data
 df = pd.read_csv("dataset\Raw_Data.csv", encoding='cp1252')
@@ -22,7 +23,9 @@ with open('dataset\Dataset.csv', 'r') as file:
         # Loop through each column in the row
         for column in row:
             # Convert the column to lowercase and append it to the lowercase row list
+            column = stem(column)
             lowercase_row.append(column.lower())
+            
         # Append the lowercase row list to the lowercase data list
         lowercase_data.append(lowercase_row)
 # Open a new file to write the lowercase data

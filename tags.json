@@ -1,0 +1,26 @@
+{
+    "intents": [
+      {
+        "tag": "Error",
+        "patterns": [" "],
+        "responses": ["Error"
+        ]
+      },
+
+      {
+        "tag": "brand",
+        "patterns": ["EKET PAX ALEX BERGMUND BESTÃ… GLENN ARKELSTORP BILLY BESTÃ… HEMNES slattum"
+        ],
+        "responses": ["brand"
+        ]
+      },
+    
+      {
+        "tag": "type",
+        "patterns": ["chairs chairs beds wardrobes trolleys"
+        ],
+        "responses": ["color"
+        ]
+      }
+    ]
+  }
