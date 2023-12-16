@@ -7,10 +7,10 @@ from nltk_utils import bag_of_words, tokenize
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-with open('training.json', 'r') as json_data:
+with open('tags.json', 'r') as json_data:
     intents = json.load(json_data)
 
-FILE = "training.pth"
+FILE = "tags.pth"
 data = torch.load(FILE)
 
 input_size = data["input_size"]
@@ -18,7 +18,6 @@ hidden_size = data["hidden_size"]
 output_size = data["output_size"]
 all_words = data['all_words']
 tags = data['tags']
-print(tags)
 model_state = data["model_state"]
 
 model = NeuralNet(input_size, hidden_size, output_size).to(device)
@@ -31,19 +30,13 @@ bot_name = "Home Completer"
 def get_response(msg):
     sentence = tokenize(msg)
     X = bag_of_words(sentence, all_words)
-    print(X)
     X = X.reshape(1, X.shape[0])
-    print(X)
     X = torch.from_numpy(X).to(device)
-    print(X)
 
     output = model(X)
-    print(output)
     _, predicted = torch.max(output, dim=1)
-    print(predicted)
-    print(tags)
+
     tag = tags[predicted.item()]
-    print(tag)
 
     probs = torch.softmax(output, dim=1)
     prob = probs[0][predicted.item()]
@@ -55,14 +48,14 @@ def get_response(msg):
     return "I do not understand..."
 
 
-# if __name__ == "__main__":
-#     print("Let's chat! (type 'quit' to exit)")
-#     while True:
-#         # sentence = "do you use credit cards?"
-#         sentence = input("You: ")
-#         if sentence == "quit":
-#             break
+if __name__ == "__main__":
+    print("Let's chat! (type 'quit' to exit)")
+    while True:
+        # sentence = "do you use credit cards?"
+        sentence = input("You: ")
+        if sentence == "quit":
+            break
 
-#         resp = get_response(sentence)
-#         print(resp)
+        resp = get_response(sentence)
+        print(resp)
 

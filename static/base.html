@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Chatbot</title>
+    <title>Chatbot</title> 
 </head>
 <body>
 <div class="container">
@@ -25,10 +25,10 @@
             </div>
             <div class="chatbox__footer">
                 <input class = "question" type="text" placeholder="Write a message...">
-                <button class="chatbox__send--footer send__button btn btn-dark">Send</button>
+                <button type="button" class="btn btn-dark" class="chatbox__send--footer send__button">Send</button>
                 <form id="imageForm" enctype="multipart/form-data">
-                    <input class="btn btn-dark" type="file" name="file" id="imageUpload" accept="image/*">
-                    <input class="btn btn-dark" type="button" value="Submit Image" onclick="uploadImage()">
+                    <input type="file" name="file" id="imageUpload" accept="image/*">
+                    <input type="button" value="Submit Image" onclick="uploadImage()">
                 </form>
             </div>
         </div>

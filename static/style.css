@@ -23,7 +23,7 @@ body {
 =============== */
 .chatbox {
     position: absolute;
-    bottom: 30px;
+    bottom: 0px;
     right: 30px;
 }
 
@@ -49,7 +49,10 @@ body {
 
 /* BUTTON */
 .chatbox__button {
-    text-align: right;
+    /* text-align: right; */
+    position:absolute;
+    bottom:0;
+    right: 0;
 }
 
 .send__button {
@@ -98,11 +101,12 @@ body {
 
 .chatbox__support {
     background: #f9f9f9;
-    height: 450px;
-    width: 350px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    width: 1100px;
+    box-shadow: 10px 0px 15px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    top: 0;
 }
 
 /* HEADER */
@@ -135,6 +139,7 @@ body {
 /* Messages */
 .chatbox__messages {
     padding: 0 20px;
+    height: 1000px
 }
 
 .messages__item {
@@ -164,21 +169,29 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 20px;
+    justify-content: space-around;
+    padding: 10px 10px;
     background: var(--secondaryGradient);
     box-shadow: var(--secondaryBoxShadow);
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
-.chatbox__footer input {
-    width: 80%;
+.chatbox__footer input.question{
+    width: 50%;
+}
+
+.chatbox__footer input{
     border: none;
     padding: 10px 10px;
     border-radius: 30px;
     text-align: left;
+    overflow: auto;
+}
+
+.chatbox__footer form , #imageForm{
+    padding-left: 20px;
 }
 
 .chatbox__send--footer {
