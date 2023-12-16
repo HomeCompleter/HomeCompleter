@@ -63,7 +63,7 @@ def Reset_data():
 	data = pd.read_csv("dataset\Dataset.csv", encoding='cp1252')
 	print("Let's chat! (type 'quit' to exit) (type 'reset' to reset)")
 	list_of_numbers = [0,3000]
-	return
+	return "Data renewed successfully. Ready for the next input."
 
 # Retrieve a link of a product
 def Read_Input(IDs):
@@ -80,7 +80,8 @@ def Randomize_Value(list):
 # ------------------------------------------------------------------------------------------------
 
 # Collect input from user and turn it into a dictionary
-def Get_Input(input):
+def Get_Input(input): 
+	if input=="reset": return Reset_data()
 	keywords = Get_Keywords(input)
 	categories = Get_Categories(keywords)
 	dict = Get_Dict(categories, keywords)
