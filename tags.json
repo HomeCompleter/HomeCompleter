@@ -2,7 +2,7 @@
     "intents": [
       {
         "tag": "Error",
-        "patterns": [" "],
+        "patterns": ["asdfasdfasdf "],
         "responses": ["Error"
         ]
       },
