@@ -56,5 +56,24 @@ def predict():
     message = {"answer": response}
     return jsonify(message)
 
+# @app.route('/send_message', methods=['POST'])
+# def send_message():
+#     # Assume the client sends a JSON payload with the image URL and link
+#     data = request.get_json()
+
+#     # Extract image URL and link from the JSON payload
+#     image_url = data.get('image_url')
+#     link = data.get('link')
+
+#     # Process the image and link as needed (e.g., save to a database, etc.)
+
+#     # For simplicity, just echoing the received data back
+#     response_data = {
+#         'image_url': image_url,
+#         'link': link
+#     }
+
+#     return jsonify(response_data)
+
 if __name__ == "__main__":
     app.run(debug=True)

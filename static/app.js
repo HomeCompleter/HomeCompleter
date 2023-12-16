@@ -51,11 +51,11 @@ class Chatbox {
             body: JSON.stringify({ message: text1 }),
             mode: 'cors',
             headers: {
-              'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
             },
-          })
-          .then(r => r.json())
-          .then(r => {
+        })
+        .then(r => r.json())
+        .then(r => {
             let msg2 = { name: "Sam", message: r.answer };
             this.messages.push(msg2);
             this.updateChatText(chatbox)
@@ -65,7 +65,7 @@ class Chatbox {
             console.error('Error:', error);
             this.updateChatText(chatbox)
             textField.value = ''
-          });
+        });
     }
 
     updateChatText(chatbox) {
@@ -79,7 +79,7 @@ class Chatbox {
             {
                 html += '<div class="messages__item messages__item--operator">' + item.message + '</div>'
             }
-          });
+        });
 
         const chatmessage = chatbox.querySelector('.chatbox__messages');
         chatmessage.innerHTML = html;
