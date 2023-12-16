@@ -34,3 +34,13 @@ sẽ cho phép máy có quyền chạy lệnh)
 
 -Khởi động flask: *flask --debug run*
 (--debug: Cập nhật lại ứng dụng mỗi khi có thay đổi) 
+
+# File Explained
+a) app.py: 
+b) _finding.py
+c) _getdata.py
+d) chat.py
+e) model.py
+f) nltk_utils.py
+g) tags.py
+h) training.py
