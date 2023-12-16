@@ -52,7 +52,7 @@ def predict():
     text = request.get_json().get("message")
     # TODO: check if text is valid
     # response = get_response(text)
-    response = Read_Input(Get_Input(text))
+    response = Get_Input(text)
     message = {"answer": response}
     return jsonify(message)
 
