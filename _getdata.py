@@ -5,10 +5,25 @@ from nltk_utils import tokenize,stem
 
 # Read raw data
 df = pd.read_csv("dataset\Raw_Data.csv", encoding='cp1252')
+# for row in df["price"]:
+#     if type(row) == str:
+#         row = row.replace('SR', '')
+#         row = row.replace(',', '')
+#         row = float(row)
+#     row = row
+# df["price"] = df["price"].replace(',', '')
+
+# df['price'] = df['Status'].replace({'P': 'A'}) 
+# df.loc[(df.Name.isin(['Avi','Dav','Ron'])) & (df.Age < 33), 'Babys'] += 1
+# df.loc[(),"price"] = df.loc[(),"price"].replace(',', '')
+
 # Write data
 with open("dataset\Dataset.csv", 'w', newline='') as f:
-  f.write(df.to_csv(index=True))
-
+    f.write(df.to_csv())
+# with open("dataset\Dataset.csv", 'w', newline='') as f:
+#     f["price"] = df["price"].replace([',','SR'], '')
+#     f.write(df.to_csv())
+#     print(df["price"])
 
 # Open the CSV file
 with open('dataset\Dataset.csv', 'r') as file:
@@ -28,6 +43,7 @@ with open('dataset\Dataset.csv', 'r') as file:
             
         # Append the lowercase row list to the lowercase data list
         lowercase_data.append(lowercase_row)
+
 # Open a new file to write the lowercase data
 with open('dataset\Dataset.csv', 'w', newline='') as file:
     # Create a CSV writer object

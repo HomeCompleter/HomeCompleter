@@ -1,5 +1,5 @@
 # HomeCompleter
-A chatbot for advertising and introducing furniture from Ikea
+A chatbot for advertising and introducing furniture from Ikea.
 
 ## Change directory (cd) vào thư mục
 
@@ -25,6 +25,7 @@ sẽ cho phép máy có quyền chạy lệnh)
 *pip install nltk*
 *pip install pandas*
 *pip install numpy*
+*pip install openai*
 
 ## Select file to activate flask
 
@@ -36,11 +37,9 @@ sẽ cho phép máy có quyền chạy lệnh)
 (--debug: Cập nhật lại ứng dụng mỗi khi có thay đổi) 
 
 # File Explained
-a) app.py: 
-b) _finding.py
-c) _getdata.py
-d) chat.py
-e) model.py
-f) nltk_utils.py
-g) tags.py
-h) training.py
+a) app.py: là ứng dụng web sử dụng Flask để điều khiển các thao tác trên web
+b) _finding.py: chứa các function dùng để tra cứu, tìm kiếm các sản phẩm dựa trên yêu cầu của người dùng
+c) _getdata.py: xử lý dữ liệu ban đầu thành dữ liệu đơn giản hơn để chatbot truy cập tới
+d) chat.py: chức năng trò chuyện với chatbot dưới phần terminal
+e) model.py: dùng để xây dựng Neuron cho quá trình Machine Learning, tạo ra các model cho chatbot
+f) nltk_utils.py: thao tác xử lý ngôn ngữ tự nhiên được thực hiện ở đây

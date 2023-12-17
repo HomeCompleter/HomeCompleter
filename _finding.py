@@ -14,16 +14,16 @@ from nltk_utils import tokenize,stem
 # Find by ID function
 def Create_ID_List():
 	global data
-	Filter_Values("price", min(list_of_numbers), max(list_of_numbers))
+	# Filter_Values("price", min(list_of_numbers), max(list_of_numbers))
 	print(list_of_numbers)
-	return Read_Input([data["id"].tolist()])
+	return Read_Input([data["item_id"].tolist()])
 def Find_Row_ID(value):
 	global data
-	data = data[data["id"]==value]
+	data = data[data["item_id"]==value]
 	return
 def Find_Cell_ID(value, category):
 	global data
-	return data[data["id"]==value][category].tolist()
+	return data[data["item_id"]==value][category].tolist()
 # ------------------------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------------------------
 # Sort Function
@@ -46,6 +46,7 @@ def Filter_Values(category, left, right):
 	return
 
 def Filter(input):
+	Reset_data()
 	for category in input.keys():
 		Filter_Func(category, input[category])
 	# print(data)
@@ -86,6 +87,7 @@ def Get_Input(input):
 	categories = Get_Categories(keywords)
 	dict = Get_Dict(categories, keywords)
 	print("Dict:", dict)
+	if input=="continue": return Continue_data()
 	if len(dict) == 0: return ("Can't find what you're looking for. Maybe you should mention more about it?")
 	else: return Filter(dict) 
 

@@ -1,0 +1,7 @@
+﻿  nearlyFinal.cpp
+E:\proj\nearlyFinal\nearlyFinal.cpp(107,12): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\proj\nearlyFinal\nearlyFinal.cpp(149,16): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+E:\proj\nearlyFinal\nearlyFinal.cpp(209,24): warning C4244: '+=': conversion from '__int64' to 'int', possible loss of data
+E:\proj\nearlyFinal\nearlyFinal.cpp(241,15): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+E:\proj\nearlyFinal\nearlyFinal.cpp(296,22): warning C4244: '+=': conversion from '__int64' to 'int', possible loss of data
+  nearlyFinal.vcxproj -> E:\proj\nearlyFinal\x64\Debug\nearlyFinal.exe

@@ -53,6 +53,7 @@ def predict():
     # TODO: check if text is valid
     # response = get_response(text)
     response = Get_Input(text)
+    # response = answer(text)
     message = {"answer": response}
     return jsonify(message)
 
